@@ -4,7 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 
 import Home from '../pages/home'
-import AjoutProjet from '../pages/ajoutProjer'
+import AjoutProjet from '../pages/ajoutProjet'
+import Listeprojet from '../pages/liste-projet'
 
 const HomeNav = createStackNavigator(
     {
@@ -22,7 +23,8 @@ const HomeNav = createStackNavigator(
 
 const AjoutNav = createStackNavigator(
     {
-        Ajout: AjoutProjet,
+        Liste:Listeprojet,
+        AjoutProjet: AjoutProjet,
     },
     {
         defaultNavigationOptions: {
@@ -51,7 +53,7 @@ const mainNavigator = createDrawerNavigator(
         Ajout: {
             screen: AjoutNav,
             navigationOptions: {
-                drawerLabel: "Ajout projet",
+                drawerLabel: "Mes projet",
             },
             contentOptions: {
                 labelStyle: {
