@@ -6,6 +6,9 @@ import { createAppContainer } from 'react-navigation'
 import Home from '../pages/home'
 import AjoutProjet from '../pages/ajoutProjet'
 import Listeprojet from '../pages/liste-projet'
+import ListeEquipement from '../pages/listeEquipement'
+import AjoutEquipement from '../pages/AjoutEquipement'
+import UpdateEquipement from '../pages/updateEquipement'
 
 const HomeNav = createStackNavigator(
     {
@@ -25,6 +28,9 @@ const AjoutNav = createStackNavigator(
     {
         Liste:Listeprojet,
         AjoutProjet: AjoutProjet,
+        ListeEquipement: ListeEquipement,
+        AjoutEquipement: AjoutEquipement,
+        UpdateEquipement:UpdateEquipement
     },
     {
         defaultNavigationOptions: {
