@@ -9,8 +9,6 @@ const Home = (props) => {
     setstoredData(Data);
   }, []);
 
-  alert(storedData);
-
   return (
     <View style={styles.container}>
       <Text>home pages</Text>

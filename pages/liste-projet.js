@@ -3,6 +3,8 @@ import { ListItem, Body, Right, Text } from "native-base";
 import { Authcontext } from "../context/authContext";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 import IconEntypo from "react-native-vector-icons/Entypo";
+import IconFontAwesome from "react-native-vector-icons/FontAwesome";
+import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { View, RefreshControl, ScrollView } from "react-native";
 
 const wait = (timeout) => {
@@ -73,10 +75,10 @@ const ListeProjet = (props) => {
           list.map((item, index) => (
             <ListItem avatar>
               <Body>
-                <View style={{ marginTop: 20 }}>
-                  <Text>{item.titre}</Text>
-                  <Text note>{item.descreption}</Text>
-                  <Text note>{item.datelancement}</Text>
+                <View style={{ marginTop: 10 }}>
+                  <Text style={{ marginTop: 20 }}>{item.titre}</Text>
+                  <Text style={{ marginTop: 20 }} note>{item.descreption}</Text>
+                  <Text style={{ marginTop: 20 }} note>{item.datelancement}</Text>
                 </View>
               </Body>
               <Right>
@@ -94,12 +96,42 @@ const ListeProjet = (props) => {
                   }}
                 />
 
+                <IconFontAwesome
+                  name="product-hunt"
+                  size={25}
+                  color="#0288d1"
+                  style={{ marginTop: 20 }}
+                  onPress={() => {
+                    props.navigation.navigate({
+                      routeName: "ListeProduction",
+                      params: {
+                        id: item._id,
+                      },
+                    });
+                  }}
+                />
+
+                <IconMaterialIcons
+                  name="public"
+                  size={25}
+                  color="#0288d1"
+                  style={{ marginTop: 20 }}
+                  onPress={() => {
+                    props.navigation.navigate({
+                      routeName: "ListeMarketing",
+                      params: {
+                        id: item._id,
+                      },
+                    });
+                  }}
+                />
+
                 <IconAntDesign
                   name="delete"
                   size={20}
                   color="#c62828"
                   onPress={() => {}}
-                  style={{ marginTop: 30 }}
+                  style={{ marginTop: 20 }}
                   onPress={async () => {
                     let response = await fetch(
                       `http://192.168.1.185:5000/api/projet/${item._id}`,

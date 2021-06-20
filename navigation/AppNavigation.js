@@ -9,6 +9,12 @@ import Listeprojet from '../pages/liste-projet'
 import ListeEquipement from '../pages/listeEquipement'
 import AjoutEquipement from '../pages/AjoutEquipement'
 import UpdateEquipement from '../pages/updateEquipement'
+import ListeProduction from '../pages/liste-production'
+import AjoutProduction from '../pages/AjoutProduction'
+import UpdateProduction from '../pages/update-production'
+import AjoutMarketing from '../pages/marketing/ajout-marketing'
+import ListeMarketing from '../pages/marketing/liste-marketing'
+import UpdateMarketing from '../pages/marketing/update-marketing'
 
 const HomeNav = createStackNavigator(
     {
@@ -30,7 +36,13 @@ const AjoutNav = createStackNavigator(
         AjoutProjet: AjoutProjet,
         ListeEquipement: ListeEquipement,
         AjoutEquipement: AjoutEquipement,
-        UpdateEquipement:UpdateEquipement
+        UpdateEquipement:UpdateEquipement,
+        ListeProduction: ListeProduction,
+        AjoutProduction:AjoutProduction,
+        UpdateProduction: UpdateProduction,
+        ListeMarketing: ListeMarketing,
+        AjoutMarketing: AjoutMarketing,
+        UpdateMarketing : UpdateMarketing
     },
     {
         defaultNavigationOptions: {
