@@ -192,7 +192,7 @@ const Signup = (props) => {
 };
 
 Signup.navigationOptions = {
-  headerTitle: "Signup",
+  headerTitle: "Inscription",
 };
 
 const styles = StyleSheet.create({

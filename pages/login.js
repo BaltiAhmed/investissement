@@ -76,7 +76,7 @@ const Login = (props) => {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <Button title="Login" color="#4a148c" onPress={() => { submit() }} />
+                    <Button title="Connextion" color="#4a148c" onPress={() => { submit() }} />
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button
@@ -84,7 +84,7 @@ const Login = (props) => {
                         color="#4a148c"
                         onPress={() => {
                             props.navigation.navigate({
-                                routeName: "Signup",
+                                routeName: "Inscription",
 
                             });
                         }}
@@ -96,7 +96,7 @@ const Login = (props) => {
 };
 
 Login.navigationOptions = {
-    headerTitle: 'Authenticate'
+    headerTitle: 'Authentification'
 };
 
 const styles = StyleSheet.create({
