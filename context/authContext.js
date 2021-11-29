@@ -4,5 +4,10 @@ export const Authcontext = createContext({
   userId: null,
   token: null,
   login: () => {},
-  logout: () => {}
+  logout: () => {},
+  financiereId: null,
+  financieretoken: null,
+  financierelogin: () => {},
+  financierelogout: () => {},
+  
 });

@@ -4,12 +4,18 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import Login from '../pages/login'
 import Signup from '../pages/signup'
+import SignupFinanciere from '../pages/financière/signup'
+import LoginFinanciere from '../pages/financière/login'
 
 
 const LoginNav = createStackNavigator(
     {
+        
         Login: Login,
-        Signup: Signup
+        LoginFinanciere: LoginFinanciere,
+        Signup: Signup,
+        SignupFinanciere: SignupFinanciere,
+        
     },
     {
         defaultNavigationOptions: {

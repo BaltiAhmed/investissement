@@ -37,17 +37,60 @@ export default function App() {
     }
   }, [login]);
 
+  const [tokenFinanciere, setTokenFinanciere] = useState(null);
+  const [FinanciereId, setFinanciereId] = useState(null);
+
+  const loginFinanciere = useCallback(async (uid, token) => {
+    setFinanciere(token);
+    setFinanciereId(uid);
+    try {
+      await AsyncStorage.setItem(
+        "userData",
+        JSON.stringify({
+          tokenFinanciere: token,
+          FinanciereId: userId,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const logoutFinanciere = useCallback(() => {
+    setTokenFinanciere(null);
+    setFinanciereId(null);
+    AsyncStorage.removeItem("userData");
+  }, []);
+
+  useEffect(async () => {
+    const storedData = await JSON.parse(AsyncStorage.getItem("userData"));
+    if (storedData && storedData.tokenFinanciere) {
+      loginFinanciere(storedData.FinanciereId, storedData.tokenFinanciere);
+    }
+  }, [login]);
+
   let routes;
 
   if (token) {
     routes = <PagesNav />;
+  }else if(tokenFinanciere){
+
   } else {
     routes = <LoginNav />;
   }
 
   return (
     <Authcontext.Provider
-      value={{ userId: userId, token: token, login: login, logout: logout }}
+      value={{
+        userId: userId,
+        token: token,
+        login: login,
+        logout: logout,
+        financiereId: FinanciereId,
+        tokenFinanciere: tokenFinanciere,
+        financierelogin: loginFinanciere,
+        financierelogout: logoutFinanciere,
+      }}
     >
       {routes}
     </Authcontext.Provider>
