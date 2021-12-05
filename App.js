@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { StyleSheet, AsyncStorage } from "react-native";
 import PagesNav from "./navigation/AppNavigation";
+import FianciereNav from "./navigation/appNavigationFinanciere";
 import LoginNav from "./navigation/authNavigation";
 import { Authcontext } from "./context/authContext";
 
@@ -41,7 +42,7 @@ export default function App() {
   const [FinanciereId, setFinanciereId] = useState(null);
 
   const loginFinanciere = useCallback(async (uid, token) => {
-    setFinanciere(token);
+    setTokenFinanciere(token);
     setFinanciereId(uid);
     try {
       await AsyncStorage.setItem(
@@ -74,7 +75,7 @@ export default function App() {
   if (token) {
     routes = <PagesNav />;
   }else if(tokenFinanciere){
-
+    routes = <FianciereNav />;
   } else {
     routes = <LoginNav />;
   }

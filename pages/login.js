@@ -43,6 +43,28 @@ const Login = (props) => {
     auth.login(responsedata.utilisateur._id, responsedata.token);
   };
 
+  const submitFinanciere = async () => {
+    let response = await fetch(
+      "http://192.168.1.185:5000/api/financiere/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      }
+    );
+    let responsedata = await response.json();
+    if (!response.ok) {
+      Alert.alert("Message", responsedata.message, [{ text: "fermer" }]);
+      throw new Error(responsedata.message);
+    }
+    auth.financierelogin(responsedata.financiere._id, responsedata.token);
+  };
+
   return (
     <Tabs>
       <Tab
@@ -160,7 +182,7 @@ const Login = (props) => {
                 title="Connextion"
                 color="#4a148c"
                 onPress={() => {
-                  submit();
+                  submitFinanciere();
                 }}
               />
             </View>

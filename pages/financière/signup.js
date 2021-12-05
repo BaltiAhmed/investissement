@@ -59,7 +59,7 @@ const SignupFinanciere = (props) => {
   };
 
   const submit = async () => {
-    const url = "http://192.168.43.177:5000/api/financiere/signup";
+    const url = "http://192.168.1.185:5000/api/financiere/signup";
     const fileUri = profile.uri;
     const newImageUri = "file:///" + fileUri.split("file:/").join("");
     const formData = new FormData();

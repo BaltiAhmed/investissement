@@ -50,7 +50,7 @@ const ListeProduction = (props) => {
     };
     sendRequest();
   }, []);
-
+  const auth = useContext(Authcontext);
   return (
     <ScrollView
       refreshControl={
@@ -58,21 +58,23 @@ const ListeProduction = (props) => {
       }
     >
       <View>
-        <View style={{ marginLeft: "8%", marginTop: 30 }}>
-          <IconEntypo
-            name="add-to-list"
-            size={50}
-            color="#1976d2"
-            onPress={() => {
-              props.navigation.navigate({
-                routeName: "AjoutProduction",
-                params: {
-                  id: EId,
-                },
-              });
-            }}
-          />
-        </View>
+        {auth.token && (
+          <View style={{ marginLeft: "8%", marginTop: 30 }}>
+            <IconEntypo
+              name="add-to-list"
+              size={50}
+              color="#1976d2"
+              onPress={() => {
+                props.navigation.navigate({
+                  routeName: "AjoutProduction",
+                  params: {
+                    id: EId,
+                  },
+                });
+              }}
+            />
+          </View>
+        )}
 
         {list &&
           list.map((item, index) => (
@@ -83,49 +85,51 @@ const ListeProduction = (props) => {
                   <Text note>{item.marche}</Text>
                 </View>
               </Body>
-              <Right>
-                <MaterialCommunityIcons
-                  name="update"
-                  size={25}
-                  color="#00e676"
-                  onPress={() => {
-                    props.navigation.navigate({
-                      routeName: "UpdateProduction",
-                      params: {
-                        id: item._id,
-                      }
-                    });
-                  }}
-                />
-
-                <IconAntDesign
-                  name="delete"
-                  size={20}
-                  color="#c62828"
-                  onPress={() => {}}
-                  style={{ marginTop: 30 }}
-                  onPress={async () => {
-                    let response = await fetch(
-                      `http://192.168.1.185:5000/api/production/${item._id}`,
-                      {
-                        method: "DELETE",
-                        headers: {
-                          "Content-Type": "application/json",
+              {auth.token && (
+                <Right>
+                  <MaterialCommunityIcons
+                    name="update"
+                    size={25}
+                    color="#00e676"
+                    onPress={() => {
+                      props.navigation.navigate({
+                        routeName: "UpdateProduction",
+                        params: {
+                          id: item._id,
                         },
+                      });
+                    }}
+                  />
+
+                  <IconAntDesign
+                    name="delete"
+                    size={20}
+                    color="#c62828"
+                    onPress={() => {}}
+                    style={{ marginTop: 30 }}
+                    onPress={async () => {
+                      let response = await fetch(
+                        `http://192.168.1.185:5000/api/production/${item._id}`,
+                        {
+                          method: "DELETE",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                        }
+                      );
+                      let responsedata = await response.json();
+                      if (!response.ok) {
+                        Alert.alert("Message", "Failed !!", [
+                          { text: "fermer" },
+                        ]);
+                        throw new Error(responsedata.message);
                       }
-                    );
-                    let responsedata = await response.json();
-                    if (!response.ok) {
-                      Alert.alert("Message", "Failed !!", [{ text: "fermer" }]);
-                      throw new Error(responsedata.message);
-                    }
-                    setList(list.filter((el) => el._id !== item._id));
-                    Alert.alert("Message", "Supprimer", [
-                      { text: "fermer" },
-                    ]);
-                  }}
-                />
-              </Right>
+                      setList(list.filter((el) => el._id !== item._id));
+                      Alert.alert("Message", "Supprimer", [{ text: "fermer" }]);
+                    }}
+                  />
+                </Right>
+              )}
             </ListItem>
           ))}
       </View>

@@ -14,7 +14,6 @@ const ListeMarketing = (props) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const EId = props.navigation.getParam("id");
-  const auth = useContext(Authcontext);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -59,23 +58,22 @@ const ListeMarketing = (props) => {
       }
     >
       <View>
-        {auth.token && (
-          <View style={{ marginLeft: "8%", marginTop: 30 }}>
-            <IconEntypo
-              name="add-to-list"
-              size={50}
-              color="#1976d2"
-              onPress={() => {
-                props.navigation.navigate({
-                  routeName: "AjoutMarketing",
-                  params: {
-                    id: EId,
-                  },
-                });
-              }}
-            />
-          </View>
-        )}
+        <View style={{ marginLeft: "8%", marginTop: 30 }}>
+          <IconEntypo
+            name="add-to-list"
+            size={50}
+            color="#1976d2"
+            onPress={() => {
+              props.navigation.navigate({
+                routeName: "AjoutMarketing",
+                params: {
+                  id: EId,
+                },
+              });
+            }}
+          />
+        </View>
+
         {list &&
           list.map((item, index) => (
             <ListItem avatar>
@@ -86,51 +84,49 @@ const ListeMarketing = (props) => {
                   <Text note>Duré par semaine: {item.duree}</Text>
                 </View>
               </Body>
-              {auth.token && (
-                <Right>
-                  <MaterialCommunityIcons
-                    name="update"
-                    size={25}
-                    color="#00e676"
-                    onPress={() => {
-                      props.navigation.navigate({
-                        routeName: "UpdateMarketing",
-                        params: {
-                          id: item._id,
-                        },
-                      });
-                    }}
-                  />
-
-                  <IconAntDesign
-                    name="delete"
-                    size={20}
-                    color="#c62828"
-                    onPress={() => {}}
-                    style={{ marginTop: 30 }}
-                    onPress={async () => {
-                      let response = await fetch(
-                        `http://192.168.1.185:5000/api/marketing/${item._id}`,
-                        {
-                          method: "DELETE",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                        }
-                      );
-                      let responsedata = await response.json();
-                      if (!response.ok) {
-                        Alert.alert("Message", "Failed !!", [
-                          { text: "fermer" },
-                        ]);
-                        throw new Error(responsedata.message);
+              <Right>
+                <MaterialCommunityIcons
+                  name="update"
+                  size={25}
+                  color="#00e676"
+                  onPress={() => {
+                    props.navigation.navigate({
+                      routeName: "UpdateMarketing",
+                      params: {
+                        id: item._id,
                       }
-                      setList(list.filter((el) => el._id !== item._id));
-                      Alert.alert("Message", "Supprimer", [{ text: "fermer" }]);
-                    }}
-                  />
-                </Right>
-              )}
+                    });
+                  }}
+                />
+
+                <IconAntDesign
+                  name="delete"
+                  size={20}
+                  color="#c62828"
+                  onPress={() => {}}
+                  style={{ marginTop: 30 }}
+                  onPress={async () => {
+                    let response = await fetch(
+                      `http://192.168.1.185:5000/api/marketing/${item._id}`,
+                      {
+                        method: "DELETE",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                      }
+                    );
+                    let responsedata = await response.json();
+                    if (!response.ok) {
+                      Alert.alert("Message", "Failed !!", [{ text: "fermer" }]);
+                      throw new Error(responsedata.message);
+                    }
+                    setList(list.filter((el) => el._id !== item._id));
+                    Alert.alert("Message", "Supprimer", [
+                      { text: "fermer" },
+                    ]);
+                  }}
+                />
+              </Right>
             </ListItem>
           ))}
       </View>
