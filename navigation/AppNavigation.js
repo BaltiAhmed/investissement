@@ -2,7 +2,7 @@ import React from 'react'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
-
+import AntDesign from "react-native-vector-icons/AntDesign";
 import Home from '../pages/home'
 import AjoutProjet from '../pages/ajoutProjet'
 import Listeprojet from '../pages/liste-projet'
@@ -15,6 +15,7 @@ import UpdateProduction from '../pages/update-production'
 import AjoutMarketing from '../pages/marketing/ajout-marketing'
 import ListeMarketing from '../pages/marketing/liste-marketing'
 import UpdateMarketing from '../pages/marketing/update-marketing'
+import ChatScreen from '../pages/chat'
 
 const HomeNav = createStackNavigator(
     {
@@ -54,6 +55,20 @@ const AjoutNav = createStackNavigator(
     }
 );
 
+const ChatNav = createStackNavigator(
+    {
+      ChatScreen: ChatScreen,
+    },
+    {
+      defaultNavigationOptions: {
+        headerStyle: {
+          backgroundColor: "#4a148c",
+        },
+        headerTintColor: "white",
+      },
+    }
+  );
+
 const mainNavigator = createDrawerNavigator(
     {
         Home: {
@@ -72,6 +87,18 @@ const mainNavigator = createDrawerNavigator(
             screen: AjoutNav,
             navigationOptions: {
                 drawerLabel: "Mes projet",
+            },
+            contentOptions: {
+                labelStyle: {
+                    marginTop: 100
+                }
+
+            },
+        },
+        Chat: {
+            screen: ChatNav,
+            navigationOptions: {
+                drawerLabel: "Messages",
             },
             contentOptions: {
                 labelStyle: {
