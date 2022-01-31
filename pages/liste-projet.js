@@ -19,7 +19,7 @@ const ListeProjet = (props) => {
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.1.185:5000/api/projet/utilisateur/${auth.userId}`
+        `http://192.168.1.46:5000/api/projet/utilisateur/${auth.userId}`
       );
 
       const responseData = await response.json();
@@ -38,7 +38,7 @@ const ListeProjet = (props) => {
   useEffect(() => {
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.1.185:5000/api/projet/utilisateur/${auth.userId}`
+        `http://192.168.1.46:5000/api/projet/utilisateur/${auth.userId}`
       );
 
       const responseData = await response.json();
@@ -134,7 +134,7 @@ const ListeProjet = (props) => {
                   style={{ marginTop: 20 }}
                   onPress={async () => {
                     let response = await fetch(
-                      `http://192.168.1.185:5000/api/projet/${item._id}`,
+                      `http://192.168.1.46:5000/api/projet/${item._id}`,
                       {
                         method: "DELETE",
                         headers: {

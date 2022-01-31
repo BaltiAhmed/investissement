@@ -22,7 +22,7 @@ const Signup = (props) => {
 
   const submit = async () => {
     let response = await fetch(
-      "http://192.168.1.185:5000/api/utilisateur/signup",
+      "http://192.168.1.46:5000/api/utilisateur/signup",
       {
         method: "POST",
         headers: {

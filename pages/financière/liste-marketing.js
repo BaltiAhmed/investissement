@@ -20,7 +20,7 @@ const ListeMarketing = (props) => {
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.1.185:5000/api/marketing/projet/${EId}`
+        `http://192.168.1.46:5000/api/marketing/projet/${EId}`
       );
 
       const responseData = await response.json();
@@ -38,7 +38,7 @@ const ListeMarketing = (props) => {
   useEffect(() => {
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.1.185:5000/api/marketing/projet/${EId}`
+        `http://192.168.1.46:5000/api/marketing/projet/${EId}`
       );
 
       const responseData = await response.json();
@@ -107,7 +107,7 @@ const ListeMarketing = (props) => {
                   style={{ marginTop: 30 }}
                   onPress={async () => {
                     let response = await fetch(
-                      `http://192.168.1.185:5000/api/marketing/${item._id}`,
+                      `http://192.168.1.46:5000/api/marketing/${item._id}`,
                       {
                         method: "DELETE",
                         headers: {
