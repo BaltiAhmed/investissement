@@ -21,8 +21,9 @@ const Signup = (props) => {
   const [qualification, setQualification] = useState();
 
   const submit = async () => {
+    console.log("sigup promoteur")
     let response = await fetch(
-      "http://192.168.1.46:5000/api/utilisateur/signup",
+      "http://192.168.137.1:5000/api/utilisateur/signup",
       {
         method: "POST",
         headers: {

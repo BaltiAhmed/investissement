@@ -23,7 +23,7 @@ const Login = (props) => {
 
   const submit = async () => {
     let response = await fetch(
-      "http://192.168.1.46:5000/api/utilisateur/login",
+      "http://192.168.137.1:5000/api/utilisateur/login",
       {
         method: "POST",
         headers: {
@@ -62,6 +62,7 @@ const Login = (props) => {
       Alert.alert("Message", responsedata.message, [{ text: "fermer" }]);
       throw new Error(responsedata.message);
     }
+    console.log("login promoteur")
     auth.financierelogin(responsedata.financiere._id, responsedata.token);
   };
 

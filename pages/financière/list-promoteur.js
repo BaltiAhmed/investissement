@@ -20,7 +20,7 @@ const ListPromoteur = (props) => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.1.46:5000/api/utilisateur`);
+      const response = await fetch(`http://192.168.137.1:5000/api/utilisateur`);
 
       const responseData = await response.json();
       if (!response.ok) {
@@ -36,7 +36,7 @@ const ListPromoteur = (props) => {
 
   useEffect(() => {
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.1.46:5000/api/utilisateur`);
+      const response = await fetch(`http://192.168.137.1:5000/api/utilisateur`);
 
       const responseData = await response.json();
       if (!response.ok) {

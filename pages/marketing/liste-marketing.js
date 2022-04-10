@@ -108,7 +108,7 @@ const ListeMarketing = (props) => {
                     color="#c62828"
                     onPress={() => {}}
                     style={{ marginTop: 30 }}
-                    onPress={async () => {
+                    OnPress={async () => {
                       let response = await fetch(
                         `http://192.168.1.185:5000/api/marketing/${item._id}`,
                         {

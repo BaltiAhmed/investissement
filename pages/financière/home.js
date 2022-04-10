@@ -32,7 +32,7 @@ const Home = (props) => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.1.46:5000/api/projet/`);
+      const response = await fetch(`http://192.168.137.1:5000/api/projet/`);
 
       const responseData = await response.json();
       if (!response.ok) {
@@ -49,7 +49,7 @@ const Home = (props) => {
   const auth = useContext(Authcontext);
   useEffect(() => {
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.1.46:5000/api/projet/`);
+      const response = await fetch(`http://192.168.137.1:5000/api/projet/`);
 
       const responseData = await response.json();
       if (!response.ok) {

@@ -28,7 +28,7 @@ const AjoutProjet = (props) => {
   const auth = useContext(Authcontext);
 
   const submit = async () => {
-    let response = await fetch("http://192.168.1.185:5000/api/projet/ajout", {
+    let response = await fetch("http://192.168.137.1:5000/api/projet/ajout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

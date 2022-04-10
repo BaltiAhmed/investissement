@@ -23,7 +23,7 @@ const ChatScreen = (props) => {
     setInterval(() => {
       const sendRequest = async () => {
         const response = await fetch(
-          `http://192.168.1.185:5000/api/message/client/${auth.userId}`
+          `http://192.168.137.1:5000/api/message/client/${auth.userId}`
         );
 
         const responseData = await response.json();
@@ -49,7 +49,7 @@ const ChatScreen = (props) => {
     };
     setMessages(messages.concat(p));
 
-    let response = await fetch("http://192.168.1.185:5000/api/message/ajoutClient", {
+    let response = await fetch("http://192.168.137.1:5000/api/message/ajoutClient", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

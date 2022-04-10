@@ -13,7 +13,7 @@ const UpdateMarketing = (props) => {
 
   const submit = async () => {
     let response = await fetch(
-      `http://192.168.1.185:5000/api/marketing/${id}`,
+      `http://192.168.137.1:5000/api/marketing/${id}`,
       {
         method: "PATCH",
         headers: {

@@ -14,7 +14,7 @@ const AjoutProduction = (props) => {
 
   const submit = async () => {
     let response = await fetch(
-      "http://192.168.1.185:5000/api/production/ajout",
+      "http://192.168.137.1:5000/api/production/ajout",
       {
         method: "POST",
         headers: {
